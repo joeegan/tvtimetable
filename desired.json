@@ -1,0 +1,53 @@
+{"times":
+	[{
+	 "time": "9 am",
+	 "shows": [
+	 	{
+	 		"name": "Under the hammer",
+	 		"channel": "BBC 1"
+	 	},
+	 	{	
+	 		"name": "Antiques Roadshow",
+	 		"channel": "BBC 2"
+	 	},
+	 	{
+	 		"name": "Coutryfile",
+	 		"channel": "BBC 3"
+	 	},
+	 	{
+	 		"name": "Tax dodgers",
+	 		"channel": "BBC FOUR"
+	 	},
+	 	{
+	 		"name": "Cricket",
+	 		"channel": "ITV 1"
+	 	}
+ 		]
+	},{
+	 "time": "9.15 am",
+	 "shows": [
+	 	{
+	 		"name": "Curry workshop",
+	 		"channel": "ITV 4"
+	 	}
+ 		]
+	}
+	,{
+	 "time": "9.30 am",
+	 "shows": [
+	 	{
+	 		"name": "Robot wars",
+	 		"channel": "BBC 1"
+	 	},
+	 	{	
+	 		"name": "Meet the parents",
+	 		"channel": "BBC 2"
+	 	},
+	 	{
+	 		"name": "Police interceptors",
+	 		"channel": "BBC 3"
+	 	}
+ 		]
+	}
+	]
+}
