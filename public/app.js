@@ -6,6 +6,10 @@ function getRandomInt(min, max) {
 }
 $(function(){
 	var container = $('.container');
+
+	// TODO expose the data generated from getschedule.js and set up that as an endpoint instead of desired.json
+	// Should be updated once every day at midnight... NOTE: the JSON structure has changed.
+
 	$.getJSON('./desired.json').then(function(data) {
 		var times = data.times;
 		for (var i=0; i < times.length; i++) {
@@ -21,4 +25,3 @@ $(function(){
 		}
 	});
 });
-;
