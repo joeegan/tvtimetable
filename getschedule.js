@@ -1,14 +1,15 @@
 var http = require("http");
+var jsonData;
 
 http.get("http://services.tvrage.com/tools/quickschedule.php?country=GB", function(res) {
-  console.log("Got response: " + res.statusCode);
   var str = '';
   res.on('data', function (chunk) {
     str += chunk;
   });
 
   res.on('end', function () {
-    console.log(format(str));
+  	jsonData = format(str);
+  	console.log('formatted');
   });
 });
 
@@ -48,6 +49,16 @@ function format(text){
 			});
 		}
 
-	})
+	});
 	return json;
+}
+
+module.exports = function(cb){
+    if (typeof jsonData != 'undefined'){
+    	console.log('hitting callback');
+        cb(jsonData);
+    } else {
+    	console.log('in else');
+        callback = cb;
+    }
 }
