@@ -1,6 +1,9 @@
+<h1>Today</h1>
 {{#each data}}
-    <p>{{@key}}</p>
-    {{#each data}}
-    	foo
-    {{/each}}
+    	<h2>{{@key}}</h2> <!-- time -->
+    	<ul>
+    	{{#each this}}
+    		<li>{{this.showName}}<span>{{this.channel}}</span></li>
+		{{/each}}
+		</ul>
 {{/each}}

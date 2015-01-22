@@ -1,6 +1,7 @@
 var http = require("http");
 var jsonData;
 
+
 http.get("http://services.tvrage.com/tools/quickschedule.php?country=GB", function(res) {
   var str = '';
   res.on('data', function (chunk) {
@@ -9,7 +10,6 @@ http.get("http://services.tvrage.com/tools/quickschedule.php?country=GB", functi
 
   res.on('end', function () {
   	jsonData = format(str);
-  	console.log('formatted');
   });
 });
 
@@ -18,12 +18,12 @@ function findContent(str) {
 	return match ? match[1] : '';
 }
 
-function grabType(str) {
+function findType(str) {
 	var match = str.match(/\[([A-Z]*)\]/i);
 	return match ? match[1] : '';
 }
 
-function grabKey(str) {
+function findKey(str) {
 	return str.replace(',','').replace(/\s/g, '');
 }
 
@@ -34,15 +34,15 @@ function format(text){
 	var json = {};
 	arr.forEach(function(item, idx){
 		var content = findContent(item);
-		if (grabType(item) == "DAY") {
-			dayCode = grabKey(content);
-			json[dayCode] = [];
+		if (findType(item) == "DAY") {
+			dayCode = findKey(content);
+			json[dayCode] = {};
 		}
-		if (grabType(item) == "TIME") {
-			timeKey = grabKey(content);
+		if (findType(item) == "TIME") {
+			timeKey = findKey(content);
 			json[dayCode][timeKey] = [];
 		}
-		if (grabType(item) == "SHOW") {
+		if (findType(item) == "SHOW") {
 			json[dayCode][timeKey].push({
 				channel: content.match(/^(.*?)\^/)[1],
 				showName: content.match(/^(.*?)\^(.*?)\^/)[2]
@@ -55,10 +55,8 @@ function format(text){
 
 module.exports = function(cb){
     if (typeof jsonData != 'undefined'){
-    	console.log('hitting callback');
         cb(jsonData);
     } else {
-    	console.log('in else');
         callback = cb;
     }
 }

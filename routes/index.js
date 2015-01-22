@@ -4,10 +4,12 @@ var schedule = require('../getschedule');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-	console.log('pre schedule fetch')
 	schedule(function(data){
-		console.log('post schedule fetch');
-	  	res.render('index', {data: data});
+		var today = data[Object.keys(data)[0]];
+	  	res.render('index', {
+	  		data: today,
+	  		strData: JSON.stringify(today)
+	  	});
 	})
 });
 
