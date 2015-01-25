@@ -1,16 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var schedule = require('../getschedule');
+var today = require('../adapters/today');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-	schedule(function(data){
-		var today = data[Object.keys(data)[0]];
-	  	res.render('index', {
-	  		data: today,
-	  		strData: JSON.stringify(today)
-	  	});
-	})
+router.get('/today', function(req, res, next) {
+	res.send(today(fullschedule));
 });
 
 module.exports = router;
