@@ -18,6 +18,9 @@
     "express": "~4.11.0",
     "hbs": "~2.8.0",
     "morgan": "~1.5.1",
-    "serve-favicon": "~2.2.0"
+    "serve-favicon": "~2.2.0",
+    "cors": "^2.5.3",
+    "cron": "^1.0.6",
+    "xml2js": "^0.4.4"
   }
 }
