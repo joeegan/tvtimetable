@@ -11,4 +11,8 @@ router.get('/today', function(req, res, next) {
 	});
 });
 
+router.get('/wakemydyno.txt', function(req, res, next) {
+	res.send('foo');
+});
+
 module.exports = router;
