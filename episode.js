@@ -1,10 +1,12 @@
 var http = require('http');
 var xml2js = require('xml2js');
+var adapt = require('./adapters/episode');
 var url = 'http://services.tvrage.com/feeds/showinfo.php?sid=';
 
+
 var episode = function(showId, callback) {
-   console.log('showId', showId);
    http.get(url + showId, function(res) {
+      console.log('getting', url + showId);
       var xml = '';
       res.on('data', function(chunk) {
          xml += chunk;
@@ -12,8 +14,7 @@ var episode = function(showId, callback) {
 
       res.on('end', function() {
          xml2js.parseString(xml, function (err, result) {
-            console.log('episode json', result);
-            return callback(result);
+            return callback(adapt(result));
          });
       });
    });
