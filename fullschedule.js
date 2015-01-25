@@ -12,6 +12,7 @@ var cache = './cache/fullschedule.json'
 // When the app starts, the fullSchedule is read from the cache, but in memory it will be updated at midnight.
 var fullSchedule = fs.readFile(cache, function (err, data) {
   if (err) throw err;
+  console.log('read cache');
   return data;
 });
 
